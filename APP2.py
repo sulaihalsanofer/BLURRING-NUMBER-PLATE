@@ -12,10 +12,16 @@ st.write("Upload an image — the app will automatically detect and blur the num
 # Upload image
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
 
-# Load Haar Cascade
-cascade_path = cascade_path = r"C:\Users\ADMIN\Documents\haarcascade_russian_plate_number.xml"
+# Load Haar Cascade (using relative path for Streamlit Cloud)
+import os
 
+cascade_path = os.path.join(os.path.dirname(__file__), "haarcascade_russian_plate_number.xml")
 plate_cascade = cv2.CascadeClassifier(cascade_path)
+
+if plate_cascade.empty():
+    st.error("❌ Could not load Haar cascade file. Make sure 'haarcascade_russian_plate_number.xml' is in the same folder as APP2.py.")
+    st.stop()
+
 
 if uploaded_file is not None:
     # Convert uploaded file to OpenCV image
@@ -55,3 +61,4 @@ if uploaded_file is not None:
         )
 else:
     st.info("Please upload an image to get started.")
+
