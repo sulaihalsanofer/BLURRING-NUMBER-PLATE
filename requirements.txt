@@ -1,6 +1,9 @@
-streamlit
-opencv-python-headless==4.8.1.78
-numpy
-Pillow
+streamlit==1.51.0
+opencv-python==4.8.1.78
+numpy<2
+pillow
+
+
+
 
 
