@@ -1,7 +1,5 @@
 streamlit
+opencv-python
+opencv-python-headless
 numpy
-pandas
-matplotlib
-yfinance
-scikit-learn
-tensorflow
+Pillow
